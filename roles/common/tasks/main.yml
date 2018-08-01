@@ -1,0 +1,12 @@
+---
+- name: install packages for all systems
+  apt: package={{ item }} state=present
+  with_items:
+    - vim
+    - bc
+  become: true
+  tags:
+    - vim
+    - bc
+    - common
+
