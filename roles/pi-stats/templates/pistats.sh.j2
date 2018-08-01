@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#### courtesy of https://gist.github.com/xoseperez/e23334910fb45b0424b35c422760cb87
+
+cpu=`cat /sys/class/thermal/thermal_zone0/temp`
+hostname=`hostname`
+database={{ pi_stats_dbname }}
+influxhost={{ influxdb_hostname }}
+
+cpu=`echo "scale=2;$cpu / 1000" | bc`
+curl -i -XPOST "http://$influxhost:8086/write?db=$database" --data-binary "temperature,host=$hostname,name=cpu,units=celsius value=$cpu"
+
+

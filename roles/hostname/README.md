@@ -35,3 +35,8 @@ Howto
 To run just this role, add "--tags hostname" to your ansible-playbook command line
 
 
+Notes
+-----
+
+This role also sets a 127.0.1.1 alias based on {{ ansible_hostname }} in order
+to minimize the number of DNS lookups the client systems do.

@@ -38,3 +38,10 @@
   remote_user: "{{ remote_user }}" 
   roles:
     - telegraf
+
+- name: install pi-stats script and cron job
+  hosts: raspi
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - pi-stats

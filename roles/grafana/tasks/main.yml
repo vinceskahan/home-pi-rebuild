@@ -23,12 +23,12 @@
 - name: Create influxdb datasource
   grafana_datasource:
     name: testdb
-    grafana_url: http://pi3jr:3000
+    grafana_url: http://grafana:3000
     # OF COURSE DO NOT PUT THESE IN CLEARTEXT FOR REAL SYSTEMS
     grafana_user: admin
     grafana_password: admin
     ds_type: influxdb
-    url: http://pi3jr:8086
+    url: http://influxdb:8086
     database: testdb
     state: present
   tags:

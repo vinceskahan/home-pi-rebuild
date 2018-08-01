@@ -1,0 +1,4 @@
+---
+# defaults file for pi-stats
+pi_stats_dbname:   testdb
+influxdb_hostname: influxdb

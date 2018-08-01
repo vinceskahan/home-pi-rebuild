@@ -1,0 +1,18 @@
+---
+# tasks file for pi-stats
+
+- name: pi-stats file
+  template:
+    src: pistats.sh.j2
+    dest: /usr/local/bin/pistats.sh
+    mode: 0755
+  become: true
+  tags: pi-stats
+
+- name: install new cron job
+  cron:
+    name: "send pi stats to influxdb"
+    job: "bash /usr/local/bin/pistats.sh"
+    minute: "3,13,23,33,43,53"
+  tags: pi-stats
+    
