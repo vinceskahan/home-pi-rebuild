@@ -32,12 +32,7 @@
     - grafana
 
 - name: install telegraf server
-  hosts:
-    - pi3jr
-    - pi3
-    - pi
-    - r
-    - dockstar
+  hosts: raspi
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
