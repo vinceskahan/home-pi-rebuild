@@ -1,0 +1,37 @@
+---
+# tasks file for grafana
+
+- name: download grafana package from their releases dir
+  get_url:
+    url: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.2.0-beta1_{{ grafana_arch }}.deb 
+    dest: "/var/tmp/grafana_5.2.0-beta1_{{ grafana_arch }}.deb"
+  become: true
+  tags: grafana
+    
+- name: install grafana package
+  apt:
+    deb: "/var/tmp/grafana_5.2.0-beta1_{{ grafana_arch }}.deb"
+    state: present
+  become: true
+  tags: grafana
+
+- name: start grafana service
+  service: name=grafana-server state=started enabled=yes
+  become: true
+  tags: grafana
+
+- name: Create influxdb datasource
+  grafana_datasource:
+    name: testdb
+    grafana_url: http://pi3jr:3000
+    # OF COURSE DO NOT PUT THESE IN CLEARTEXT FOR REAL SYSTEMS
+    grafana_user: admin
+    grafana_password: admin
+    ds_type: influxdb
+    url: http://pi3jr:8086
+    database: testdb
+    state: present
+  tags:
+    - grafana
+    - grafanasetup
+

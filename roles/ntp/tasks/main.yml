@@ -1,0 +1,21 @@
+---
+- name: install ntp daemon 
+  apt: package={{ item }} state=present
+  with_items:
+    - ntp
+  become: true
+  tags: ntp
+
+#### this is an example of how to conditionally
+#### enable and start a service controlled by systemd 
+####
+#### commented out here because we 'always' use ntp
+#### for commonality among old and new systems here...
+#
+# - name: enable systemd-timesyncd
+#   systemd:
+#     name: systemd-timesyncd
+#     enabled: yes
+#     state: started
+#   when: ansible_service_mgr == "systemd"
+#

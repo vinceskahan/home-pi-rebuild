@@ -1,0 +1,8 @@
+---
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time={{ apt_cache_valid_time }}
+  when:
+    ansible_os_family == "Debian"
+  register: apt_cache_updated
+  become: true
+  tags: apt-cache

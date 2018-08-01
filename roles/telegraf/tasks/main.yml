@@ -1,0 +1,36 @@
+---
+# tasks file for telegraf
+
+- name: download telegraf package from their releases dir (check the cert)
+  get_url:
+    url: "https://dl.influxdata.com/telegraf/releases/telegraf_1.7.2-1_{{ telegraf_arch }}.deb"
+    dest: "/var/tmp/telegraf_1.7.2-1_{{ telegraf_arch }}.deb"
+  become: true
+  tags: telegraf
+
+- name: install telegraf package 
+  apt:
+    deb: "/var/tmp/telegraf_1.7.2-1_{{ telegraf_arch  }}.deb"
+    state: present
+  become: true
+  tags: telegraf
+
+- name: example copying file with owner and permissions
+  copy:
+    src: telegraf.conf
+    dest: /etc/telegraf/telegraf.conf
+  become: true
+  tags: telegraf
+  notify: restart telegraf
+
+- name: start telegraf service
+  service: name=telegraf state=started enabled=yes
+  become: true
+  tags: telegraf
+
+
+#
+# if telegraf_trust_source is set to true
+# set validate_certs: false
+# (needed for ancient python without SNI support)
+# 

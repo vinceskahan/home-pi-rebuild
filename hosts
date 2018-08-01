@@ -1,0 +1,34 @@
+
+# ----------- notes ----------
+#
+# each group needs at least a minimal group_vars file
+#     (see the readme file there for details)
+#
+# each host almost certainly needs a host_vars file
+#     (see the readme file there for details)
+#    
+# ----------------------------
+
+[all:children]
+dockstar
+raspi
+
+[dockstar]
+debian-ansible
+
+[raspi:children]
+pi-model3
+pi-modelB
+
+[pi-model3]
+pi3jr
+pi3
+
+[pi-modelB]
+r
+pi
+
+## [downpi]
+## zerow      hostname=pi3jr
+## pi3jr-wifi hostname=pi3jr-wifi
+###zero

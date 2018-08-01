@@ -1,0 +1,51 @@
+---
+# tasks file for influxdb
+
+- name: download influxdb package from their releases dir
+  get_url:
+    url: "https://dl.influxdata.com/influxdb/releases/influxdb_1.5.4_{{ influx_arch }}.deb"
+    dest: "/var/tmp/influxdb_1.5.4_{{ influx_arch }}.deb"
+  become: true
+  tags: influxdb
+    
+- name: install influxdb package
+  apt:
+    deb: "/var/tmp/influxdb_1.5.4_{{ influx_arch }}.deb"
+    state: present
+  become: true
+  tags: influxdb
+
+- name: start influxdb service
+  service: name=influxdb state=started enabled=yes
+  become: true
+  tags: influxdb
+
+- name: install required python packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-requests
+    - python-influxdb
+  become: true
+  tags: influxdb
+
+- name: create database
+  influxdb_database:
+      hostname: "pi3jr"
+      database_name: "testdb"
+  become: true
+  tags: influxdb
+
+- name: create admin user
+  influxdb_user:
+    user_name: admin
+    #### DANGER - OF COURSE THIS SHOULD NOT BE CLEARTEXT ON REAL SYSTEMS
+    user_password: admin
+    #### influxdb_user does not currently support setting permissions
+    #### so it's not possible to create a readonly user this way
+    #### but for now lets roll with it enough to connect the pieces....
+    admin: yes
+  become: true
+  tags: influxdb
+

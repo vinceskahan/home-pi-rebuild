@@ -1,0 +1,3 @@
+---
+# within a day is current enough
+apt_cache_valid_time: 86400

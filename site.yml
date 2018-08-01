@@ -1,0 +1,44 @@
+---
+
+- name: apply common config to every system
+  hosts: all
+  gather_facts: true
+  remote_user: "{{ remote_user }}"      # in group_vars or host_vars
+  roles:
+    - apt-cache
+    - hostname
+    - ntp
+    - mosquitto-clients
+
+- name: install mosquitto server
+  hosts: pi3jr
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - mosquitto
+
+- name: install influxdb server
+  hosts: pi3jr
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - influxdb
+
+- name: install grafana server
+  hosts: pi3jr
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - grafana
+
+- name: install telegraf server
+  hosts:
+    - pi3jr
+    - pi3
+    - pi
+    - r
+    - dockstar
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - telegraf
