@@ -1,2 +1,6 @@
 ---
 # defaults file for influxdb
+influx_version: 1.5.4
+influx_admin_user: admin
+influx_admin_password: admin
+

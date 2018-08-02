@@ -8,7 +8,8 @@ telegraf: install and configure telegraf
 Role Variables
 --------------
 
-telegraf_arch = what architecture .deb file to download
+telegraf_arch:    what architecture .deb file to download
+telegraf_version: which version to download
 
 Howto
 -----

@@ -1,2 +1,7 @@
 ---
 # defaults file for grafana
+
+grafana_user: admin
+grafana_password: admin
+grafana_version: 5.2.0-beta1
+grafana_url: http://grafana:3000

@@ -1,2 +1,4 @@
 ---
-# defaults file for influxdb
+# defaults file for telegraf
+
+telegraf_version: 1.7.2-1

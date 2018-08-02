@@ -8,9 +8,8 @@ pi-stats - install a script and crontab entry to send stats to influxdb
 Role Variables
 --------------
 
-(defaults)
-pi_stats_dbname:   testdb
-influxdb_hostname: influxdb
+pi_stats_dbname:   database name to create on the influx host
+influxdb_hostname: influx hostname to create it on
 
 Tags
 ----

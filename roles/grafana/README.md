@@ -8,7 +8,13 @@ grafana: install and configure grafana
 Role Variables
 --------------
 
-grafana_arch = what architecture .deb file to download
+grafana_arch: what architecture .deb file to download
+
+grafana_user: username for the grafana software
+grafana_password: password for that user
+
+grafana_version: what version to download
+grafana_url:  url to the grafana server
 
 Howto
 -----

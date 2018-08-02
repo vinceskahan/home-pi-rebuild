@@ -3,14 +3,14 @@
 
 - name: download telegraf package from their releases dir (check the cert)
   get_url:
-    url: "https://dl.influxdata.com/telegraf/releases/telegraf_1.7.2-1_{{ telegraf_arch }}.deb"
-    dest: "/var/tmp/telegraf_1.7.2-1_{{ telegraf_arch }}.deb"
+    url: "https://dl.influxdata.com/telegraf/releases/telegraf_{{ telegraf_version }}_{{ telegraf_arch }}.deb"
+    dest: "/var/tmp/telegraf_{{ telegraf_version }}_{{ telegraf_arch }}.deb"
   become: true
   tags: telegraf
 
 - name: install telegraf package 
   apt:
-    deb: "/var/tmp/telegraf_1.7.2-1_{{ telegraf_arch  }}.deb"
+    deb: "/var/tmp/telegraf_{{ telegraf_version }}_{{ telegraf_arch  }}.deb"
     state: present
   become: true
   tags: telegraf

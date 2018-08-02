@@ -3,14 +3,14 @@
 
 - name: download grafana package from their releases dir
   get_url:
-    url: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.2.0-beta1_{{ grafana_arch }}.deb 
-    dest: "/var/tmp/grafana_5.2.0-beta1_{{ grafana_arch }}.deb"
+    url: "https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_{{ grafana_version }}_{{ grafana_arch }}.deb"
+    dest: "/var/tmp/grafana_{{ grafana_version }}_{{ grafana_arch }}.deb"
   become: true
   tags: grafana
     
 - name: install grafana package
   apt:
-    deb: "/var/tmp/grafana_5.2.0-beta1_{{ grafana_arch }}.deb"
+    deb: "/var/tmp/grafana_{{ grafana_version }}_{{ grafana_arch }}.deb"
     state: present
   become: true
   tags: grafana
@@ -23,10 +23,9 @@
 - name: Create influxdb datasource
   grafana_datasource:
     name: testdb
-    grafana_url: http://grafana:3000
-    # OF COURSE DO NOT PUT THESE IN CLEARTEXT FOR REAL SYSTEMS
-    grafana_user: admin
-    grafana_password: admin
+    grafana_url: "{{ grafana_url }}"
+    grafana_user: "{{ grafana_user }}"
+    grafana_password: "{{ grafana_password }}"
     ds_type: influxdb
     url: http://influxdb:8086
     database: testdb

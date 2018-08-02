@@ -9,7 +9,11 @@ influxdb: install and configure influxdb
 Role Variables
 --------------
 
-influx_arch = what architecture .deb file to download
+influx_arch: what architecture .deb file to download
+influx_version: which version to download
+
+influx_admin_user: username of the influxdb default user
+influx_admin_password: password for that user
 
 Howto
 -----
