@@ -1,5 +1,7 @@
 ---
 # tasks file for pi-stats
+#
+# this requires package 'bc' which is installed in role 'common'
 
 - name: pi-stats file
   template:
@@ -15,4 +17,4 @@
     job: "bash /usr/local/bin/pistats.sh"
     minute: "3,13,23,33,43,53"
   tags: pi-stats
-    
+

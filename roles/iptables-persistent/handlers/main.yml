@@ -1,0 +1,7 @@
+---
+# handlers file for iptables-persistent
+
+- name: iptables-save
+  shell: iptables-save > /etc/iptables/rules.v4 2>&1
+  become: true
+  tags: iptables-persistent

@@ -45,3 +45,10 @@
   remote_user: "{{ remote_user }}" 
   roles:
     - pi-stats
+
+- name: install iptables-persistent on pihole box
+  hosts: pi3
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - iptables-persistent
