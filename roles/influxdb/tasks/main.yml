@@ -30,10 +30,17 @@
   become: true
   tags: influxdb
 
-- name: create database
+- name: create testdb database
   influxdb_database:
       hostname: "pi3jr"
       database_name: "testdb"
+  become: true
+  tags: influxdb
+
+- name: create pihole database
+  influxdb_database:
+      hostname: "pi3jr"
+      database_name: "pihole"
   become: true
   tags: influxdb
 
