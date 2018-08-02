@@ -16,3 +16,21 @@ Notes:
     usernames and associated passwords.  THESE ARE EXAMPLES ONLY.
     DO NOT USE THEM ON YOUR REAL SYSTEMS...
 
+
+At last audit, this uses the following ansible modules:
+
+  * apt
+  * copy
+  * cron
+  * get_url
+  * hostname
+  * hosts
+  * influxdb
+  * influxdb_database
+  * influxdb_user
+  * iptables
+  * service
+  * setup
+  * shell
+  * template
+

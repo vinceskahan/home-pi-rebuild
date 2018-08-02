@@ -14,7 +14,7 @@
 - name: install new cron job
   cron:
     name: "send pi stats to influxdb"
-    job: "bash /usr/local/bin/pistats.sh"
+    job: "bash /usr/local/bin/pistats.sh >/dev/null 2>&1"
     minute: "3,13,23,33,43,53"
   tags: pi-stats
 
