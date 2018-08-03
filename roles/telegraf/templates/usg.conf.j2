@@ -1,0 +1,36 @@
+[[inputs.snmp]]
+   agents = [ "usg" ]
+   version = 1
+   community = "vdssnmp"
+   [[inputs.snmp.field]]
+     name = "hostname"
+     oid = "RFC1213-MIB::sysName.0"
+     is_tag = true
+   [[inputs.snmp.field]]
+     name = "uptime"
+     oid = "RFC1213-MIB::sysUpTime.0"
+
+   # this populates all fields with all available data
+   #
+   # [[inputs.snmp.table]]
+   #   oid = "HOST-RESOURCES-MIB::hrNetworkTable"
+
+   # alternately this should populate only selected elements hopefully
+   #
+   [[inputs.snmp.table]]
+     name = "interface"
+     inherit_tags = ["hostname"]
+     oid = "IF-MIB::ifTable"
+       [[inputs.snmp.table.field]]
+         name = "ifDescr"
+         oid = "IF-MIB::ifDescr"
+         is_tag = true
+       [[inputs.snmp.table.field]]
+         name = "ifInOctets"
+         oid = "IF-MIB::ifInOctets"
+         is_tag = true
+       [[inputs.snmp.table.field]]
+         name = "ifOutOctets"
+         oid = "IF-MIB::ifOutOctets"
+         is_tag = true
+

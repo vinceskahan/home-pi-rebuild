@@ -23,12 +23,10 @@
   tags: telegraf
   notify: restart telegraf
 
-
 - name: start telegraf service
   service: name=telegraf state=started enabled=yes
   become: true
   tags: telegraf
- 
 
 # - name: stop/disable telegraf service
 #   service: name=telegraf state=stopped enabled=no
