@@ -1,6 +1,6 @@
 ---
 
-- name: apply common config to every system
+- name: common config
   hosts: all
   gather_facts: true
   remote_user: "{{ remote_user }}"      # in group_vars or host_vars
@@ -11,42 +11,24 @@
     - common
     - mosquitto-clients
 
-- name: install mosquitto server
-  hosts: pi3jr
-  gather_facts: false
-  remote_user: "{{ remote_user }}" 
-  roles:
-    - mosquitto
-
-- name: install influxdb server
-  hosts: pi3jr
-  gather_facts: false
-  remote_user: "{{ remote_user }}" 
-  roles:
-    - influxdb
-
-- name: install grafana server
-  hosts: pi3jr
-  gather_facts: false
-  remote_user: "{{ remote_user }}" 
-  roles:
-    - grafana
-
-- name: install telegraf server
+- name: all raspi
   hosts: raspi
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
     - telegraf
+    - pi-stats
 
-- name: install pi-stats script and cron job
-  hosts: raspi
+- name: pi3jr only
+  hosts: pi3jr
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
-    - pi-stats
+    - mosquitto
+    - influxdb
+    - grafana
 
-- name: install iptables-persistent on pihole box
+- name: pi3 only
   hosts: pi3
   gather_facts: false
   remote_user: "{{ remote_user }}" 
