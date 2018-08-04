@@ -24,7 +24,7 @@
   notify: restart telegraf
 
 - name: start telegraf service
-  service: name=telegraf state=started enabled=yes
+  service: name=telegraf state={{ telegraf_state }} enabled={{ telegraf_enabled }}
   become: true
   tags: telegraf
 

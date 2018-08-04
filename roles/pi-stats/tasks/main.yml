@@ -16,5 +16,18 @@
     name: "send pi stats to influxdb"
     job: "bash /usr/local/bin/pistats.sh >/dev/null 2>&1"
     minute: "3,13,23,33,43,53"
+    state: present
+  when:
+    enable_pistats_cronjob is defined and (enable_pistats_cronjob|bool)
+  tags: pi-stats
+
+- name: remove pistats cron job
+  cron:
+    name: "send pi stats to influxdb"
+    job: "bash /usr/local/bin/pistats.sh >/dev/null 2>&1"
+    minute: "3,13,23,33,43,53"
+    state: absent
+  when:
+    enable_pistats_cronjob is defined and not (enable_pistats_cronjob|bool)
   tags: pi-stats
 
