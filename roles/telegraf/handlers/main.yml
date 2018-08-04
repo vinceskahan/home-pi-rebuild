@@ -2,4 +2,5 @@
 - name: restart telegraf
   service: name=telegraf state=restarted 
   become: true
-
+  when:
+    - telegraf_should_run is defined and (telegraf_should_run|bool)

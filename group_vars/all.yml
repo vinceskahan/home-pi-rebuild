@@ -1,0 +1,7 @@
+---
+
+# roles/pi-stats
+enable_pistats_cronjob: false
+
+# roles/telegraf
+telegraf_should_run: false

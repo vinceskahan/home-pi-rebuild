@@ -3,5 +3,4 @@
 
 telegraf_version: 1.7.2-1
 
-telegraf_enabled: yes               # yes | no
-telegraf_state:   started           # reloaded, restarted, running, started, stopped
+telegraf_should_run: true  # set to false to disable/stop telegraf

@@ -2,4 +2,6 @@
 # defaults file for pi-stats
 pi_stats_dbname:   testdb
 influxdb_hostname: influxdb
+
+# this requires role telegraf enabled
 enable_pistats_cronjob: true

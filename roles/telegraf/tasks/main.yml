@@ -24,11 +24,16 @@
   notify: restart telegraf
 
 - name: start telegraf service
-  service: name=telegraf state={{ telegraf_state }} enabled={{ telegraf_enabled }}
+  service: name=telegraf state=started enabled=yes
   become: true
+  when:
+    - telegraf_should_run is defined and (telegraf_should_run|bool)
   tags: telegraf
 
-# - name: stop/disable telegraf service
-#   service: name=telegraf state=stopped enabled=no
-#   become: true
-#   tags: telegraf
+- name: stop/disable telegraf service
+  service: name=telegraf state=stopped enabled=no
+  become: true
+  when:
+    - telegraf_should_run is defined and not (telegraf_should_run|bool)
+  tags: telegraf
+
