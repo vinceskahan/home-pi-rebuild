@@ -6,7 +6,7 @@
   become: true
   tags: hostname
 
-- name: copy latest hostname into place
+- name: copy latest hosts file into place
   template:
     src: hosts.j2
     dest: /etc/hosts
