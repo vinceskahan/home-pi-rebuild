@@ -1,39 +1,40 @@
 ---
 # tasks file for telegraf
 
-- name: download telegraf package from their releases dir (check the cert)
-  get_url:
-    url: "https://dl.influxdata.com/telegraf/releases/telegraf_{{ telegraf_version }}_{{ telegraf_arch }}.deb"
-    dest: "/var/tmp/telegraf_{{ telegraf_version }}_{{ telegraf_arch }}.deb"
+- block:
+
+  - name: download telegraf package from their releases dir (check the cert)
+    get_url:
+      url: "https://dl.influxdata.com/telegraf/releases/telegraf_{{ telegraf_version }}_{{ telegraf_arch }}.deb"
+      dest: "/var/tmp/telegraf_{{ telegraf_version }}_{{ telegraf_arch }}.deb"
+    when:
+      - telegraf_should_run is defined and (telegraf_should_run|bool)
+  
+  - name: install telegraf package 
+    apt:
+      deb: "/var/tmp/telegraf_{{ telegraf_version }}_{{ telegraf_arch  }}.deb"
+      state: present
+    when:
+      - telegraf_should_run is defined and (telegraf_should_run|bool)
+  
+  - name: example copying file with owner and permissions
+    copy:
+      src: telegraf.conf
+      dest: /etc/telegraf/telegraf.conf
+    when:
+      - telegraf_should_run is defined and (telegraf_should_run|bool)
+    notify: restart telegraf
+  
+  - name: start telegraf service
+    service: name=telegraf state=started enabled=yes
+    when:
+      - telegraf_should_run is defined and (telegraf_should_run|bool)
+  
+  - name: stop/disable telegraf service
+    service: name=telegraf state=stopped enabled=no
+    when:
+      - telegraf_should_run is defined and not (telegraf_should_run|bool)
+
   become: true
   tags: telegraf
-
-- name: install telegraf package 
-  apt:
-    deb: "/var/tmp/telegraf_{{ telegraf_version }}_{{ telegraf_arch  }}.deb"
-    state: present
-  become: true
-  tags: telegraf
-
-- name: example copying file with owner and permissions
-  copy:
-    src: telegraf.conf
-    dest: /etc/telegraf/telegraf.conf
-  become: true
-  tags: telegraf
-  notify: restart telegraf
-
-- name: start telegraf service
-  service: name=telegraf state=started enabled=yes
-  become: true
-  when:
-    - telegraf_should_run is defined and (telegraf_should_run|bool)
-  tags: telegraf
-
-- name: stop/disable telegraf service
-  service: name=telegraf state=stopped enabled=no
-  become: true
-  when:
-    - telegraf_should_run is defined and not (telegraf_should_run|bool)
-  tags: telegraf
-
+  
