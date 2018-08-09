@@ -1,31 +1,26 @@
 ---
 # tasks file for nginx-pi
 
-- name: install nginx
-  apt: package={{ item }} state=present
-  with_items:
-    - nginx
-  become: true
+- block:
+    - name: install nginx
+      apt: package={{ item }} state=present
+      with_items:
+        - nginx
+    - name: start nginx
+      service: 
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      with_items:
+        - "nginx"
+    - name: symlink motion lastsnap into web docroot
+      file:
+        src:  "{{ motion_lastsnap_image }}"
+        dest: /var/www/html/image.jpg
+        state: link
   when:
+    - ansible_os_family == "Debian"
     - nginx_should_run is defined and (nginx_should_run|bool)
-  tags:
-    - nginx-pi
-
-- name: start nginx service
-  service: name=nginx state=started enabled=yes
   become: true
-  when:
-    - nginx_should_run is defined and (nginx_should_run|bool)
-  tags: nginx-pi
-
-
-- name: symlink motion lastsnap into web docroot
-  file:
-    src:  "{{ motion_lastsnap_image }}"
-    dest: /var/www/html/image.jpg
-    state: link
-  become: true
-  when:
-    - nginx_should_run is defined and (nginx_should_run|bool)
   tags:
     - nginx-pi
