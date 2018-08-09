@@ -1,19 +1,20 @@
 ---
-- name: set hostname
-  hostname: name={{ hostname }}
-  when:
-    hostname is defined
-  become: true
-  tags: hostname
+- block:
 
-- name: copy latest hosts file into place
-  template:
-    src: hosts.j2
-    dest: /etc/hosts
-    mode: 0755
-    backup: yes
+  - name: set hostname
+    hostname: name={{ hostname }}
+    when:
+      hostname is defined
+
+  - name: copy latest hosts file into place
+    template:
+      src: hosts.j2
+      dest: /etc/hosts
+      mode: 0755
+      backup: yes
+    become: true
+    when: ansible_hostname is defined
+
   become: true
-  when: ansible_hostname is defined
   tags:
     - hostname
-    - hosts_file
