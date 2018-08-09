@@ -1,3 +1,6 @@
 ---
 # within a day is current enough
 apt_cache_valid_time: 86400
+
+# default is to update the cache
+update_apt_cache: true
