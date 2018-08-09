@@ -34,3 +34,10 @@
   remote_user: "{{ remote_user }}" 
   roles:
     - iptables-persistent
+
+- name: pi only
+  hosts: pi
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - nginx-pi

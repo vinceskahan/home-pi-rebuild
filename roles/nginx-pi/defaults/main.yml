@@ -1,0 +1,4 @@
+---
+# defaults file for nginx-pi
+motion_lastsnap_image: /mnt/ramdisk/motion/lastsnap.jpg
+nginx_should_run: true
