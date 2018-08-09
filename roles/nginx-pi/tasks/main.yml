@@ -6,6 +6,8 @@
   with_items:
     - nginx
   become: true
+  when:
+    - nginx_should_run is defined and (nginx_should_run|bool)
   tags:
     - nginx-pi
 
@@ -23,5 +25,7 @@
     dest: /var/www/html/image.jpg
     state: link
   become: true
+  when:
+    - nginx_should_run is defined and (nginx_should_run|bool)
   tags:
     - nginx-pi

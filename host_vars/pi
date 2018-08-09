@@ -1,2 +1,3 @@
 ---
 hostname: pi
+nginx_should_run: true
