@@ -1,21 +1,22 @@
 ---
 # tasks file for iptables-persistent
 
-- name: install iptables-persistent
-  environment:
-    DEBIAN_FRONTEND: NONINTERACTIVE
-  apt: package={{ item }} state=present
-  with_items:
-    - iptables-persistent
-  become: true
-  tags: iptables-persistent
+- block:
 
-- name: block camera DNS lookups
-  iptables:
-    chain: INPUT
-    source: 192.168.1.47
-    jump: DROP
-    comment: "block amcrest camera"
+  - name: install iptables-persistent
+    environment:
+      DEBIAN_FRONTEND: NONINTERACTIVE
+    apt: package={{ item }} state=present
+    with_items:
+      - iptables-persistent
+
+  - name: block camera DNS lookups
+    iptables:
+      chain: INPUT
+      source: 192.168.1.47
+      jump: DROP
+      comment: "block amcrest camera"
+    notify: iptables-save
+
   become: true
   tags: iptables-persistent
-  notify: iptables-save
