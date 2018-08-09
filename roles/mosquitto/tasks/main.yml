@@ -1,21 +1,21 @@
 ---
 # tasks file for mosquitto
 
-- name: install mosquitto package
-  apt: package={{ item }} state=present
-  with_items:
-    - mosquitto
-  become: true
-  tags: mosquitto
+- block:
+  - name: install mosquitto package
+    apt: package={{ item }} state=present
+    with_items:
+      - mosquitto
 
-- name: install mosquitto config files
-  copy:
-    src:  "{{ item }}"
-    dest: "/etc/mosquitto/conf.d/{{ item }}"
-  with_items:
-    - anon-listener.conf
-    - bridge-to-lightsail.conf
-    - websockets-listener.conf
+  - name: install mosquitto config files
+    copy:
+      src:  "{{ item }}"
+      dest: "/etc/mosquitto/conf.d/{{ item }}"
+    with_items:
+      - anon-listener.conf
+      - bridge-to-lightsail.conf
+      - websockets-listener.conf
+    notify: restart mosquitto
+
   become: true
-  notify: restart mosquitto
   tags: mosquitto
