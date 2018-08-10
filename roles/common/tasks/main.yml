@@ -4,9 +4,11 @@
   with_items:
     - vim
     - bc
+    - lsof
   become: true
   tags:
     - vim
     - bc
+    - lsof
     - common
 
