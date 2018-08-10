@@ -1,4 +1,5 @@
-
+# vi: set bg=light
+#
 # ----------- notes ----------
 #
 # each group needs at least a minimal group_vars file
@@ -31,6 +32,10 @@ r
 pi
 
 ## [downpi]
-## zerow      hostname=pi3jr
+## zerow      hostname=zerow
 ## pi3jr-wifi hostname=pi3jr-wifi
 ###zero
+
+#--- example of how to connect to localhost withoug ssh
+# [localhost]
+# localhost ansible_connection=local
