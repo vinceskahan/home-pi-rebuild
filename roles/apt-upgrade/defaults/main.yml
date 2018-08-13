@@ -1,0 +1,5 @@
+---
+# defaults file for apt-upgrade
+
+# set to True to run the upgrade
+run_apt_upgrade: False

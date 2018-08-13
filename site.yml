@@ -17,6 +17,7 @@
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
+    - apt-upgrade
     - telegraf
     - pi-stats
 

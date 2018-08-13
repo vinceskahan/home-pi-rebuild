@@ -13,4 +13,6 @@ Howto
 -----
 To run just this role, add "--tags apt-cache" to your ansible-playbook command line
 
+To force an update, add extra-vars setting the apt_cache_valid_time very low
+  ala "--extra_vars apt_cache_valid_time=60" to set it to one minute
 
