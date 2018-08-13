@@ -1,0 +1,8 @@
+---
+# tasks file for timezone
+
+- name: set timezone 
+  timezone:
+    name: "{{ timezone }}"
+  become: true
+  tags: timezone

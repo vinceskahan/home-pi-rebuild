@@ -8,7 +8,8 @@
     - apt-cache
     - hostname
     - ntp
-    - common
+    - timezone
+    - common-packages
     - mosquitto-clients
 
 - name: all raspi
