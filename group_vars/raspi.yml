@@ -4,4 +4,3 @@ influx_arch: armhf
 grafana_arch: armhf
 telegraf_arch: armhf
 
-run_apt_upgrade: False
