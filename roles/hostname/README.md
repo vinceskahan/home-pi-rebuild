@@ -11,6 +11,7 @@ in the inventory.
 
 
 Example:
+```
    for an inventory of:
           [raspi]
           pi3jr
@@ -20,11 +21,11 @@ Example:
    this role would expect a host_vars/pi3 file containing:
        ---
        hostname: pi3
-
+```
 
 It is possible to have the host_vars file contain a different hostname
 than the name used in the ansible inventory for a particular host.  This is
-because you might need a ~/.ssh/config entry for host xyz that resolves to
+because you might need a `~/.ssh/config` entry for host xyz that resolves to
 a remote ssh hostname of an ip address or even a different hostname as known
 by your local ansible host.   The host_vars file should contain the hostname
 you want the 'remote' host to set itself to be.
@@ -38,5 +39,5 @@ To run just this role, add "--tags hostname" to your ansible-playbook command li
 Notes
 -----
 
-This role also sets a 127.0.1.1 alias based on {{ ansible_hostname }} in order
+This role also sets a 127.0.1.1 alias based on `{{ ansible_hostname }}` in order
 to minimize the number of DNS lookups the client systems do.
