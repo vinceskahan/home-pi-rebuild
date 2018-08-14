@@ -3,10 +3,17 @@
 
 - block:
 
-  - name: setup the pi
+  - name: pi user password
     user:
       name: pi
       password: "{{ PI_PASSWORD }}"
+
+  - name: pi user authorized keys
+    authorized_key:
+      user: pi
+      key: "{{ item }}"
+    with_file:
+      - id_rsa_nopass.pub
 
   become: true
   when:
