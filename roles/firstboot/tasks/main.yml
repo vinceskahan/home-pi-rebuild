@@ -1,0 +1,18 @@
+---
+# tasks file for firstboot
+
+- block:
+
+  - name: set role-specific variables if this is the first boot
+    set_fact:
+      set_pi_pass: True
+      update_apt_cache: True
+      run_apt_upgrade:   True
+
+  when:
+    - ansible_os_family == "Debian"
+    - firstboot is defined and (firstboot|bool)
+    - ansible_lsb.id == "Raspbian"
+  become: true
+  tags:
+    - firstboot

@@ -17,6 +17,7 @@
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
+    - firstboot
     - pi-pass
     - apt-upgrade
     - telegraf

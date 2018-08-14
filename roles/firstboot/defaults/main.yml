@@ -1,0 +1,4 @@
+---
+# defaults file for firstboot
+foo: undef
+bar: undef
