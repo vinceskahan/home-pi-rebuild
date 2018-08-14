@@ -38,5 +38,5 @@ Firstboot only:
  - ansible-playbook -k site.yml -i hosts -l <hostname> \
      --extra-vars="firstboot=True'
 
-        (and answer with the ansible_user password when prompted)
+   (and answer with the remote_user password when prompted)
 
