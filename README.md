@@ -34,3 +34,10 @@ At last audit, this uses the following ansible modules:
   * shell
   * template
 
+Firstboot:
+
+ - ansible-playbook -k site.yml -i hosts -l <hostname> \
+         --extra-vars="update_apt_cache=True run_apt_upgrade=True"
+
+        (and answer with the ansible_user password when prompted)
+

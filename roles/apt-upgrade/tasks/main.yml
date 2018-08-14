@@ -1,8 +1,9 @@
 ---
 # tasks file for apt-upgrade
 
-- name: run apt-upgrade
-  apt: upgrade=yes
+- block:
+    - name: run apt-upgrade
+      apt: upgrade=yes
   when:
     - ansible_os_family == "Debian"
     - run_apt_upgrade is defined and (run_apt_upgrade|bool)
