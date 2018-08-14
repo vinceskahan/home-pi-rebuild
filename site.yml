@@ -5,6 +5,7 @@
   gather_facts: true
   remote_user: "{{ remote_user }}"      # in group_vars or host_vars
   roles:
+    - firstboot
     - apt-cache
     - hostname
     - ntp
@@ -17,7 +18,6 @@
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
-    - firstboot
     - pi-pass
     - apt-upgrade
     - telegraf
