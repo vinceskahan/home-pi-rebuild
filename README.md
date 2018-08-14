@@ -5,7 +5,6 @@ The hosts file here uses both group_vars and host_vars parameters.....
 Examples:
 
     ansible-playbook -i hosts site.yml 
-    (run just the ntp role on all hosts)
 
     add "-l [hostname|groupname]" to limit to one host or group
     add "--tags ntp" to run just the ntp role (for example)
@@ -34,7 +33,7 @@ At last audit, this uses the following ansible modules:
   * shell
   * template
 
-Firstboot:
+Firstboot only:
 
  - ansible-playbook -k site.yml -i hosts -l <hostname> \
      --extra-vars="firstboot=True'

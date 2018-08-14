@@ -8,6 +8,14 @@ Role Variables
 
 firstboot: True/False
 
+Notes
+-----
+
+This executes only on the Raspberry Pi since it calls roles which are pi-specific,
+via enabling facts as 'True' that are by default 'False' in order to speed up normal
+runs.
+
+
 Howto
 -----
 
