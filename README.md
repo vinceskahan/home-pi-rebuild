@@ -98,3 +98,18 @@ At last audit, this uses the following ansible modules:
   * template
 
 
+Description of the various systems and what runs where
+------------------------------------------------------
+
+  * pi3jr = pi3 running off SSD as essentially the pi 'server' so to speak
+        - runs influxdb, grafana
+  * pi3 = pi3 running pi-hole and mqtt server
+  * pi = model-B timelapse USB cam via motion
+  * r = model-B outside temperature sensors, makes data available via nginx for other systems
+  * g = usually off model-B
+  * b = usually off model-B
+  * zero = usually off play pi-zero
+  * zerow = usually off play pi-zero-w
+  * dockstar = Seagate Dockstar running weewx connected to the Davis VP2 weather station
+
+
