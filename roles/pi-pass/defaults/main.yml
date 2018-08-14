@@ -1,0 +1,7 @@
+---
+# defaults file for pi-pass
+
+# 'pi'
+PI_PASSWORD: $6$pogHpJHKcTIIR9Ey$7P/UIYx9cz45j49wdVJ9JlUjigGKbC3q8tNw4nMTD/gj/3xSilzW32puuebsKy8icpxEA6MrF2TbK1.cRJCN3/
+
+set_pi_pass: False

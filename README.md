@@ -37,7 +37,7 @@ At last audit, this uses the following ansible modules:
 Firstboot:
 
  - ansible-playbook -k site.yml -i hosts -l <hostname> \
-         --extra-vars="update_apt_cache=True run_apt_upgrade=True"
+     --extra-vars="set_pi_pass=True update_apt_cache=True run_apt_upgrade=True"
 
         (and answer with the ansible_user password when prompted)
 

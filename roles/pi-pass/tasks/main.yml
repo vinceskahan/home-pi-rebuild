@@ -1,0 +1,16 @@
+---
+# tasks file for pi-pass
+
+- block:
+
+  - name: setup the pi
+    user:
+      name: pi
+      password: "{{ PI_PASSWORD }}"
+
+  become: true
+  when:
+    - ansible_os_family == "Debian"
+    - set_pi_pass is defined and (set_pi_pass|bool)
+  tags:
+    - pi-pass
