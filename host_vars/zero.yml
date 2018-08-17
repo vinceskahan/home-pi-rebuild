@@ -1,3 +1,5 @@
 ---
 hostname: zero
 
+# roles/netmon
+enable_netmon: True

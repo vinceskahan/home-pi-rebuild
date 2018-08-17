@@ -23,6 +23,7 @@
     - apt-upgrade
     - telegraf
     - pi-stats
+    - netmon
 
 - name: pi3jr only
   hosts: pi3jr

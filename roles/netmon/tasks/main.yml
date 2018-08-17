@@ -1,0 +1,24 @@
+---
+# tasks file for netmon
+
+- block:
+
+  - name: Download script
+    get_url:
+      url: https://raw.githubusercontent.com/vinceskahan/raspi-odds-and-ends/master/netmon.sh
+      dest: /usr/local/bin/netmon.sh
+      mode: 0755
+
+  - name: install crontab
+    cron:
+      name: "try to self-heal network as needed"
+      job: "/usr/local/bin/netmon.sh"
+      minute: "*/10"
+      state: present
+
+  when:
+    - enable_netmon is defined and (enable_netmon|bool)
+  become: true
+  tags: netmon
+
+

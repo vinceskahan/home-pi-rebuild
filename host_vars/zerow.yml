@@ -1,2 +1,5 @@
 ---
 hostname: zerow
+
+# roles/netmon
+enable_netmon: True

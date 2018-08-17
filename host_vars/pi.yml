@@ -1,3 +1,8 @@
 ---
 hostname: pi
+
+# roles/nginx-pi
 nginx_should_run: true
+
+# roles/netmon
+enable_netmon: True
