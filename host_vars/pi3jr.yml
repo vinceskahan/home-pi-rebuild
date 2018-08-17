@@ -1,2 +1,5 @@
 ---
 hostname: pi3jr
+
+# roles/crontab
+enable_load_average_crontab: true

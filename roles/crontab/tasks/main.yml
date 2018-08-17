@@ -1,0 +1,26 @@
+---
+# tasks file for crontab
+
+- block:
+
+  - name: load average cron job
+    cron:
+      name: "load average"
+      job: "logger -t '[loadavg]' `uptime`"
+      minute: "{{ min_load_average_crontab }}"
+      state: present
+    when:
+      - enable_crontab is defined and (enable_crontab|bool)
+      - enable_load_average_crontab is defined and (enable_load_average_crontab|bool)
+
+  - name: pi cpu temp cron job
+    cron:
+      name: "measure temperature"
+      job: "logger -t '[CPUTEMP]' `vcgencmd measure_temp`"
+      minute: "{{ min_measure_temperature_crontab }}"
+      state: present
+    when:
+      - enable_crontab is defined and (enable_crontab|bool)
+      - enable_measure_temp_crontab is defined and (enable_measure_temp_crontab|bool)
+
+  tags: crontab

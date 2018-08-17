@@ -4,3 +4,5 @@ influx_arch: armhf
 grafana_arch: armhf
 telegraf_arch: armhf
 
+# roles/crontab
+enable_measure_temp_crontab: true

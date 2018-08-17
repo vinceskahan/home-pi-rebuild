@@ -12,6 +12,7 @@
     - timezone
     - common-packages
     - mosquitto-clients
+    - crontab
 
 - name: all raspi
   hosts: raspi
@@ -45,3 +46,4 @@
   remote_user: "{{ remote_user }}" 
   roles:
     - nginx-pi
+

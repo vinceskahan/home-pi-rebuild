@@ -1,0 +1,11 @@
+---
+# defaults file for crontab
+
+enable_crontab: true
+
+# entries for each known job
+enable_load_average_crontab: false
+min_load_average_crontab:  49
+
+enable_measure_temp_crontab: false
+min_measure_temperature_crontab: 50 

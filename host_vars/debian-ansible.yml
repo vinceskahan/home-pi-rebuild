@@ -1,2 +1,5 @@
 ---
 hostname: debian
+
+# roles/crontab
+enable_load_average_crontab: true
