@@ -30,8 +30,11 @@ zerow
 [pi-modelB]
 r
 pi
+g
 
 ## [downpi]
+## g
+## b
 ## zerow      hostname=zerow
 ## pi3jr-wifi hostname=pi3jr-wifi
 ###zero
