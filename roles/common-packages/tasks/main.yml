@@ -5,6 +5,8 @@
     - vim
     - bc
     - lsof
+    - python-pip
+    - python3-pip
   become: true
   tags:
     - vim
