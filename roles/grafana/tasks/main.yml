@@ -16,16 +16,21 @@
   - name: start grafana service
     service: name=grafana-server state=started enabled=yes
 
-  - name: Create influxdb datasource
+  # note - this must line up with the role/influxdb list of databases
+  - name: Create influxdb datasources
     grafana_datasource:
-      name: testdb
+      name: "{{ item }}"
       grafana_url: "{{ grafana_url }}"
       grafana_user: "{{ grafana_user }}"
       grafana_password: "{{ grafana_password }}"
       ds_type: influxdb
       url: http://influxdb:8086
-      database: testdb
+      database: "{{ item }}"
       state: present
+    with_items:
+      - testdb
+      - pihole
+      - weatherflow
 
   become: true
   tags:

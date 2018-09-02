@@ -23,15 +23,16 @@
         - python-requests
         - python-influxdb
 
-    - name: create testdb database
-      influxdb_database:
-        hostname: "pi3jr"
-        database_name: "testdb"
+    # note - this must line up with the role/grafana list of datasources
 
-    - name: create pihole database
+    - name: create databases
       influxdb_database:
-        hostname: "pi3jr"
-        database_name: "pihole"
+        hostname: "influxdb"
+        database_name: "{{ item }}"
+      with_items:
+        - testdb
+        - pihole
+        - weatherflow
 
     - name: create admin user
       influxdb_user:
