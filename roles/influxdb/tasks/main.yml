@@ -24,6 +24,8 @@
         - python-influxdb
 
     # note - this must line up with the role/grafana list of datasources
+    #        make sure to set retention_policy as well below here
+    #        or the default 1w policy will be in effect
 
     - name: create databases
       influxdb_database:
@@ -42,6 +44,22 @@
         #### so it's not possible to create a readonly user this way
         #### but for now lets roll with it enough to connect the pieces....
         admin: yes
+
+    - name: create 30 day retention policy
+      influxdb_retention_policy:
+          database_name: "{{ item }}"
+          # default is required in ansible 2.5 docs, likely a bug there
+          duration: 30d
+          hostname: "influxdb"
+          password: "{{ influx_admin_password }}"
+          policy_name: autogen
+          replication: 1
+          ssl: no
+          username: "{{ influx_admin_user }}"
+      with_items:
+        - testdb
+        - pihole
+        - weatherflow
 
   become: true
   tags: influxdb

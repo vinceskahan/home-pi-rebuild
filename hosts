@@ -20,6 +20,10 @@ debian-ansible
 [raspi:children]
 pi-model3
 pi-modelB
+pi-model3plus
+
+[pi-model3plus]
+pi3plus
 
 [pi-model3]
 pi3jr

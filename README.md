@@ -11,10 +11,11 @@ raspberry pi, which is the current intent.
 Howto
 -----
 
-    ansible-playbook -i hosts site.yml 
+    ansible-playbook -i hosts site.yml  [--check]
 
     * add "-l [hostname|groupname]" to limit to one host or group
     * add "-t ntp" to run just the ntp role (for example)
+    * add "--check" to run in 'dry run' mode, making no actual changes
 
 Multiple `-l` and `-t` blocks are supported by ansible-playbook at this writing.
 
