@@ -29,11 +29,30 @@ Firstboot only
 ---------------
 
 ```
-ansible-playbook -k site.yml -i hosts -l <hostname> \
-     --extra-vars="firstboot=True'
+# for initial setup of the ssh
+# - copy the image over using Etcher
+# - make sure the /boot is mounted on the host (/Volumes/boot on a mac)
+# - copy the ssh file to the mounted /boot tree
+# - copy the wpa_supplicant.conf file to the mounted /boot tree
+# - do an orderly umount of the disk
+# - plug it into the pi and boot the pi, it should come up on wifi
 
-   (and answer with the remote_user password when prompted)
+# authorize my passwordless ssh key
+ssh-copy-id -i ~/.ssh/id_rsa_nopass pi@HOST_NAME_HERE
+
+# verify it works
+ssh -i ~/.ssh/id_rsa_nopass pi@HOST_NAME_HERE hostname
+
+# check the initial playbook works
+ansible-playbook ./playbook.yml -i hosts -l HOST_NAME_HERE --check
+
+# run the playbook for real (takes a while due to apt updates)
+
+ansible-playbook site.yml -i hosts -l HOST_NAME_HERE \
+     --extra-vars="firstboot=True"
+
 ```
+
 
 DANGER WILL ROBINSON
 --------------------
