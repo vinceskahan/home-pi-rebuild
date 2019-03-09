@@ -25,8 +25,8 @@
     - pi-stats
     - netmon
 
-- name: pi3jr only
-  hosts: pi3jr
+- name: pi3plus only
+  hosts: pi3plus
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:

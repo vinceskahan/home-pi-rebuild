@@ -2,9 +2,10 @@
 # tasks file for mosquitto
 
 - name: install mosquitto clients
-  apt: package={{ item }} state=present
-  with_items:
-    - mosquitto-clients
+  apt: 
+    name:
+      - mosquitto-clients
+    state: present
   become: true
   tags: mosquitto
 

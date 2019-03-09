@@ -26,7 +26,7 @@ pi-model3plus
 pi3plus
 
 [pi-model3]
-pi3jr
+pi3jr-wifi hostname=pi3jr-wifi
 pi3
 zero
 zerow
@@ -39,8 +39,8 @@ g
 ## [downpi]
 ## g
 ## b
+## pi3jr
 ## zerow      hostname=zerow
-## pi3jr-wifi hostname=pi3jr-wifi
 ###zero
 
 #--- example of how to connect to localhost withoug ssh

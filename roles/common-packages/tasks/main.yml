@@ -1,12 +1,13 @@
 ---
 - name: install packages for all systems
-  apt: package={{ item }} state=present
-  with_items:
-    - vim
-    - bc
-    - lsof
-    - python-pip
-    - python3-pip
+  apt: 
+    name:
+      - vim
+      - bc
+      - lsof
+      - python-pip
+      - python3-pip
+    state: present
   become: true
   tags:
     - vim

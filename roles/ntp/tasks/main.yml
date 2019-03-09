@@ -1,9 +1,9 @@
 ---
 - name: install ntp daemon 
-  apt: package={{ item }} state=present
-  with_items:
-    - ntp
-  become: true
+  apt: 
+    name:
+      - ntp
+    state: present
   tags: ntp
 
 #### this is an example of how to conditionally
