@@ -1,10 +1,18 @@
 ---
-- name: install ntp daemon 
-  apt: 
-    name:
-      - ntp
-    state: present
-  tags: ntp
+- block:
+
+  - name: install ntp daemon
+    apt:
+      name:
+        - ntp
+      state: present
+    tags: ntp
+
+  when:
+    - ansible_os_family == "Debian"
+  become: true
+  tags:
+    - ntp
 
 #### this is an example of how to conditionally
 #### enable and start a service controlled by systemd 
@@ -19,3 +27,4 @@
 #     state: started
 #   when: ansible_service_mgr == "systemd"
 #
+
