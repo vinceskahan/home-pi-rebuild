@@ -48,8 +48,7 @@ ansible-playbook ./playbook.yml -i hosts -l HOST_NAME_HERE --check
 
 # run the playbook for real (takes a while due to apt updates)
 
-ansible-playbook site.yml -i hosts -l HOST_NAME_HERE \
-     --extra-vars="firstboot=True"
+ansible-playbook site.yml -i hosts -l HOST_NAME_HERE --extra-vars="firstboot=True"
 
 ```
 
