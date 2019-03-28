@@ -1,0 +1,9 @@
+
+# (things we do often)
+#
+#---- to update the hosts file everywhere
+# ansible-playbook -i hosts --tags hostname site.yml 
+
+
+#---- to update the hosts file just on one host
+# ansible-playbook -i hosts --tags hostname site.yml --limit hostnameHere
