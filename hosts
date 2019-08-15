@@ -21,6 +21,7 @@ debian-ansible
 pi-model3
 pi-modelB
 pi-model3plus
+pi-model4
 
 [pi-model3plus]
 pi3plus
@@ -35,6 +36,10 @@ zerow
 r
 pi
 g
+
+[pi-model4]
+pi4-wifi hostname=pi4
+# pi4
 
 ## [downpi]
 ## g
