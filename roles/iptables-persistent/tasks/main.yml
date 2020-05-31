@@ -6,9 +6,10 @@
   - name: install iptables-persistent
     environment:
       DEBIAN_FRONTEND: NONINTERACTIVE
-    apt: package={{ item }} state=present
-    with_items:
-      - iptables-persistent
+    apt: 
+      pkg:
+        - iptables-persistent
+      state: present
 
   - name: block camera DNS lookups
     iptables:
