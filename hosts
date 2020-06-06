@@ -18,27 +18,27 @@ raspi
 debian-ansible
 
 [raspi:children]
-pi-model3
-pi-modelB
-pi-model3plus
-pi-model4
+pi_model3
+pi_modelB
+pi_model3plus
+pi_model4
 
-[pi-model3plus]
+[pi_model3plus]
 pi3plus
 
-[pi-model3]
+[pi_model3]
 pi3jr-wifi hostname=pi3jr-wifi
 pi3
 zero
 zerow
 
-[pi-modelB]
+[pi_modelB]
 r
 pi
 g
 
 # lets assume dramble rack and all wifi
-[pi-model4]
+[pi_model4]
 pi4p1 hostname=pi4p1
 pi4p2 hostname=pi4p2
 pi4p3 hostname=pi4p3
