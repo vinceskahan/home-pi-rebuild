@@ -19,8 +19,47 @@
         - weewx
         - sqlite3
         - nginx
+        - git
+        - python3-paho-mqtt
       state: "present"
       update_cache: yes
+
+  - name: grab Belchertown skin
+    git:
+      repo: 'https://github.com/poblabs/weewx-belchertown.git'
+      dest: /var/tmp/weewx-belchertown
+    register: belchertown_cloned
+
+  - name: install Belchertown skin
+    command:
+      cmd: wee_extension --install /var/tmp/weewx-belchertown
+      creates: /etc/weewx/skins/Belchertown
+
+  - name: grab MQTT extension
+    git:
+      repo: 'https://github.com/matthewwall/weewx-mqtt.git'
+      dest: /var/tmp/weewx-mqtt
+    register: mqtt_extension_grabbed
+
+  - name: install MQTT extension
+    command:
+      cmd: wee_extension --install /var/tmp/weewx-mqtt
+      creates: /usr/share/weewx/user/mqtt.py
+
+  - name: enable MQTT extension (to pi4p1)
+    lineinfile:
+      path: /etc/weewx/weewx.conf
+      regexp: 'server_url = INSERT_SERVER_URL_HERE'
+      line:   '        server_url = mqtt://192.168.1.177:1883'
+    register: mqtt_extension_enabled
+    notify: restart weewx
+
+  - name: enable weewx debug
+    lineinfile:
+      path: /etc/weewx/weewx.conf
+      regexp: 'debug = 0'
+      line:   'debug = 1'
+    notify: restart weewx
 
   #- name: install weewx config files
     #copy:
@@ -32,4 +71,27 @@
 
   become: true
   tags: weewx
+
+#--- to do - the MQTT section should look like
+#[StdRESTful]
+#    [[MQTT]]
+#        server_url = mqtt://pi4p1:1883
+#        topic = weather
+#        binding = archive, loop
+#        aggregation = aggregate
+#        log_success = false
+#
+#--- to do - the Belchertown section should look like
+#
+#    [[Belchertown]]
+#        skin = Belchertown
+#        HTML_ROOT = /var/www/html/weewx/belchertown
+#
+#        [[[Extras]]]
+#        mqtt_websockets_enabled = 1
+#        mqtt_websockets_host = 192.168.1.177
+#        mqtt_websockets_port = 9001
+#        mqtt_websockets_ssl = 0
+#        mqtt_websockets_topic = "weather/loop"
+#
 
