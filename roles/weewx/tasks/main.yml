@@ -1,0 +1,35 @@
+---
+# tasks file for weewx
+
+- block:
+
+  - name: weewx apt key
+    apt_key:
+      url: http://weewx.com/keys.html
+      state: present
+
+  - name: weewx apt repo location
+    apt_repository:
+      repo: deb [arch=all] http://weewx.com/apt/python3 buster main
+      state: present
+
+  - name: install weewx and coreqs
+    package: 
+      name:
+        - weewx
+        - sqlite3
+        - nginx
+      state: "present"
+      update_cache: yes
+
+  #- name: install weewx config files
+    #copy:
+      #src:  "{{ item }}"
+      ##dest: "/etc/weewx/{{ item }}"
+    #with_items:
+      #- weewx.conf
+    #notify: restart weewx
+
+  become: true
+  tags: weewx
+

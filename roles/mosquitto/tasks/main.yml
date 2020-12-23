@@ -3,9 +3,9 @@
 
 - block:
   - name: install mosquitto package
-    apt: package={{ item }} state=present
-    with_items:
-      - mosquitto
+    package: 
+      name:  "mosquitto"
+      state: "present"
 
   - name: install mosquitto config files
     copy:

@@ -1,10 +1,10 @@
 ---
 
 # roles/pi-stats
-enable_pistats_cronjob: True
+enable_pistats_cronjob: False
 
 # roles/telegraf
-telegraf_should_run: True
+telegraf_should_run: False
 
 # roles/apt-cache
 update_apt_cache: False

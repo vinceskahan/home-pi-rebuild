@@ -21,9 +21,9 @@
   roles:
     - pi-pass
     - apt-upgrade
-    - telegraf
     - pi-stats
     - netmon
+    ####- telegraf
 
 - name: pi3plus only
   hosts: pi3plus
@@ -48,3 +48,10 @@
   roles:
     - nginx-pi
 
+- name: pi4p1 only
+  hosts: pi4p1
+  gather_facts: false
+  remote_user: "{{ remote_user }}"
+  roles:
+    - mosquitto
+    - weewx
