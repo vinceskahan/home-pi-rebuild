@@ -12,9 +12,8 @@
       src:  "{{ item }}"
       dest: "/etc/mosquitto/conf.d/{{ item }}"
     with_items:
-      - anon-listener.conf
-      - bridge-to-lightsail.conf
-      - websockets-listener.conf
+      - 1883.conf
+      - 9001.conf
     notify: restart mosquitto
 
   become: true
