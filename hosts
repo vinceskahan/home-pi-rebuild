@@ -51,6 +51,6 @@ pi4p4 hostname=pi4p4
 ## pi3jr
 ###zero
 
-#--- example of how to connect to localhost withoug ssh
+#--- example of how to connect to localhost without ssh
 # [localhost]
 # localhost ansible_connection=local
