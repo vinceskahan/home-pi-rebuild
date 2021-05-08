@@ -5,95 +5,128 @@ ff02::2		ip6-allrouters
 
 127.0.1.1	{{ ansible_hostname }}
 
+#--------------------------------------------------------
+# last modified 2020-0507
+#--------------------------------------------------------
+#
 # 'unifi' alias is used by the aclite to find its controller
 # 'purpleair-d32a' is used by the purpleair when their cloud is down
+# static
+192.168.1.9   air air-wifi                  # 7C:D1:C3:E9:40:0B
+192.168.1.24  pi3 unifi                     # B8:27:EB:5C:5E:5F
 
-192.168.1.1   usg                                          f09fc2112003
-192.168.1.6   aclite                                       8002a89608b8
-192.168.1.8   pi        pi-wifi                            801f027c76ca
-192.168.1.9   air       air.local                          7cd1c3e9400b  # fe80::7ed1:c3ff:fee9:400b%wlan0
-192.168.1.11  vincetab                                     34145f6d1905
-192.168.1.12  printer   printer-wifi                       b4b52f16ebb6
-192.168.1.13  susanphone                                   703eaca05c33
-192.168.1.14  vincephone                                   84100d71fb45
-192.168.1.15  ipad                                         0415525abb95
-192.168.1.16  pi3jr-wifi                                   b827eb531b01
-192.168.1.17  susanlaptop suzie                            34de1a53d991
-192.168.1.18  debian  debian.local                         0010751a5ae2
-192.168.1.19  tv                                           3052cbf0f8fc
-192.168.1.20  r         r-wifi                             801f02d3777a
-192.168.1.21  nuc                                          c03fd566c7a4
-192.168.1.22  hootoo                                       44334cb7dfb0
-192.168.1.23  pi3-wifi                                     b827eb090b0a
-192.168.1.24  pi3 pihole unifi mqtt mqtt.local             b827eb5c5e5f
-192.168.1.25  somebodyskindle                              802aa89608b8
-192.168.1.26  bair max                                     9a00066a45d0
-# ? (192.168.1.27)                                         f0a2251d0e0d
-192.168.1.28  b         b-wifi                             801f02d37759
-192.168.1.29  ipad128                                      5cadcfc83f97
-192.168.1.30  g         g-wifi                             801f02d37720
-192.168.1.31  samsungdvd                                   90a4deb3406c
-192.168.1.39  zerow                                        b827ebab28d6
-192.168.1.40  zero                                         801f02bef6b3
-192.168.1.43  rokustick                                    b0a737e0cda5
-192.168.1.45  amcrest-wired                                9c08ecdfd065
-192.168.1.47  amcrest camera camera.local amcrest-wifi     9c08ecdfd281
-192.168.1.48  pi3jr pi3jr-wired                            b827eb064e54
-192.168.1.51  esp-green esp-9fbfdb                         68c63a9fbfdb # espid 10469339
-192.168.1.123 nuc-wifi                                     a0a8cdf46d7
-192.168.1.125 chris-kindle
-192.168.1.135 esp-red   esp-9fbb78                         68c63a9fbb78 # espid 10468216
-192.168.1.150 vince-kindle                                 fca183051cb5
-192.168.1.151 weatherflow wf                               b038297bf517
-192.168.1.152 pi3plus pi3plus-wifi nodered skahan          b827eba72cf3
-#192.168.1.152 pi3plus                                     b827ebf279a6  # this is the real wifi nic
-192.168.1.153 weemo-blue weemo                             382b780402df
-192.168.1.154 esp-white esp-452551                         b4e62d452551  # espid 4531537
-192.168.1.155 esp-blue  esp-453379                         b4e62d453379  # espid 4535161
-192.168.1.157 vincedot                                     cc9ea27918fd  # amazon-5ffccde91
-192.168.1.159 blink         blinkhub                       00037fbfe5bb
-192.168.1.160 mysimplelink  blinklive                      f4b85e998f83
-192.168.1.164 philips                                      001788a0ba1e
-192.168.1.168 susanphone                                   4026190ccc28
-192.168.1.169 nuc2-wifi                                    04d3b0fb58a1
-192.168.1.171 nuc2 influxdb-nuc2 influxdb                  94c691a6ea51
-192.168.1.173 purpleair purpleair-d32a                     84f3eb37d32a
-192.168.1.175 roku                                         d83134cf8054
-192.168.1.176 pixel3a                                      58cb527b808e
-192.168.1.182 unifi-switch         # 74:83:c2:7c:94:41
+# DHCP
+192.168.1.1   gateway archer-c7             # 3C:84:6A:C8:42:1C
+192.168.1.100 purpleair-d32a purpleair      # 84-F3-EB-37-D3-2A was .173
+192.168.1.103 pi3jr pi3jr-wifi              # B8-27-EB-53-1B-01 was .16
+192.168.1.104 esp-blue ESP-453379           # B4-E6-2D-45-33-79
+192.168.1.116 pi3-wifi                      # B8-27-EB-09-0B-0A was .23
+192.168.1.117 printer HP8100                # B4-B5-2F-16-EB-B6 was .12
+192.168.1.118 pi                            # 80-1F-02-7C-76-CA was .8
+192.168.1.119 blink1 blink_sync_module      # 00-03-7F-BF-E5-BB was .159
+192.168.1.120 hue philips                   # 00-17-88-A0-BA-1E
+192.168.1.123 nuc                           # A0-A8-CD-0F-46-D7 was .21
+192.168.1.124 Galaxy-Tab-S2                 # 34-14-5F-6D-19-05
+192.168.1.128 debian debian-wired           # 00-10-75-1A-5A-E2 was .18
+192.168.1.129 ecowitt ESP_C67304            # 8C:AA:B5:C6:73:04
+192.168.1.131 susan-ipad-24hgz              # C6-2D-0F-E0-A0-4B
+192.168.1.144 susan-fwsd CERT-482585-LT     # 14-4F-8A-1D-1B-CC
+192.168.1.146 aclite AcLiteAccessPoint      # 80-2A-A8-96-08-B8 was .25
+192.168.1.153 F4B85E60694B-mysimplelink     # F4-B8-5E-60-69-4B
+192.168.1.162 tv RokuTV                     # 30-52-CB-F0-F8-FC was .19
+192.168.1.163 amcrest camera IPC            # 9C-8E-CD-2F-5B-89 was .214
+192.168.1.164 pi4p1 pi4p1-wifi              # DC-A6-32-12-B1-92 was .177
+192.168.1.171 nuc2 nuc2-wired               # 94:C6:91:A6:EA:51 was .169
+192.168.1.181 pi3plus                       # B8-27-EB-A7-2C-F3
+192.168.1.183 vincedot amazon-5ffccde91     # CC-9E-A2-79-18-FD was .157
+192.168.1.196 r                             # 80-1F-02-D3-77-20
+192.168.1.199 pi4p2 pi4p2-wifi              # DC-A6-32-41-A9-8F was .186
+192.168.1.200 vincekindle                   # FC-A1-83-05-1C-B5
+192.168.1.201 susans-iphone                 # 56-11-D5-AE-82-9A
+192.168.1.206 zerow2                        # B8-27-EB-D0-99-81
+192.168.1.210 roku RokuPremiere             # D8:31:34:CF:80:54
+192.168.1.218 kindle-black                  # 7C-D5-66-55-8A-D8
+192.168.1.220 blink2 blink_sync_module      # 00-03-7F-FB-19-30
+192.168.1.230 vincephone Pixel-3a           # 58-CB-52-7B-80-8E
+192.168.1.232 pi4p4                         # DC-A6-32-41-A9-1A
+192.168.1.233 Switch                        # 74-83-C2-7C-94-41 was .181
+192.168.1.240 susan-ipad-5ghz               # DA-4C-F7-7C-F6-4E
+192.168.1.243 vince-ipad Vincents-iPad      # 9E-AC-82-53-94-33
+192.168.1.244 oldkindle                     # F0-A2-25-1D-0E-0D
 
-192.168.1.177 pi4p1 pi4port1       # dca63212b192 wifi    dca63212b191 eth
-192.168.1.186 pi4p2 pi4port2       # dca63241a98f wifi    dca63241a98e eth
-192.168.1.187 pi4p3 pi4port3       # dca63241a935 wifi    dca63241a934 eth
-192.168.1.188 pi4p4 pi4port4       # dca63241a91a wifi    dca63241a919 eth
 
-192.168.1.206 zerow2
+#--- old ---
+# 192.168.1.164 pi4p1-wired                 # DC-A6-32-12-B1-91
+# 192.168.1.199 pi4p2-wired                 # DC-A6-32-41-A9-8E
+# 192.168.1.187 pi4p3 pi4port3              # DC:A6:32:41:A9:35 wifi    DC:A6:32:41:A9:34 eth
+# 192.168.1.188 pi4p4 pi4port4              # dc:a6:32:41:a9:1a wifi    dc:a6:32:41:a9:19 eth
+# 192.168.1.152 pi3plus pi3plus-wifi        # B8:27:EB:A7:2C:F3 mqtt
+# 192.168.1.169 nuc2-wifi                   #  04d3b0fb58a1
 
-#192.168.0.129 tv                       3052cbf0f8fc
-#192.168.0.132 ipad                     0415525abb95
-#192.168.0.139 air                      7cd1c3e9400b
-#192.168.0.143 camera                   44334cb7dfb0
-#192.168.0.172 susanphone               703eaca05c33
-#192.168.0.173 vincetab                 34145f6d1905
-#192.168.0.174 vincephone               84100d71fb45
-#192.168.0.183 zero                     801f02bef6b3
-#192.168.0.201 printer   printer-wifi   b4b52f16ebb6
-#192.168.0.211 pi        pi-wifi        801f027c76ca
-#192.168.0.212 brianibm  brianibm-wifi  68172905df9d
-#192.168.0.229 briandell briandell-wifi 0022689e9c35
-###           bps4                     605be406e98f
-###           biphone                  70ece406e98f
-###           bnintendo                40d28a04c2d2
-###           bapple                   a4d18cd0e2d0
-###           pi3      pi3-wifi        b827eb090b0a
-# wired
-#192.168.0.1     extreme 9072400398b1
-#192.168.0.138   nuc     c03fd566c7a4
-#192.168.0.170   express 20c9d09b97ea
-#192.168.0.241   debian  0010751a5ae2 debian.local
-#192.168.0.171   pi3     b827eb5c5e5f
-#               pi      b827ebd19c62
-#               r       b827eb3c1615
-#               g       b827eb564124
-#               b       b827eb9359a5 
 
+#-- 
+#-- 192.168.1.1   usg                                          f09fc2112003
+#-- 192.168.1.25  aclite                                       8002a89608b8
+#-- 192.168.1.8   pi        pi-wifi                            801f027c76ca
+#-- 192.168.1.9   air       air.local                          7cd1c3e9400b  # fe80::7ed1:c3ff:fee9:400b%wlan0
+#-- 192.168.1.11  vincetab                                     34145f6d1905
+#-- 192.168.1.12  printer   printer-wifi                       b4b52f16ebb6
+#-- 192.168.1.13  susanphone                                   703eaca05c33
+#-- 192.168.1.14  vincephone                                   84100d71fb45
+#-- 192.168.1.15  ipad                                         0415525abb95
+#-- 192.168.1.16  pi3jr-wifi                                   b827eb531b01
+#-- 192.168.1.17  susanlaptop suzie                            34de1a53d991
+#-- 192.168.1.18  debian  debian.local                         0010751a5ae2
+#-- 192.168.1.19  tv                                           3052cbf0f8fc
+#-- 192.168.1.20  r         r-wifi                             801f02d3777a
+#-- 192.168.1.21  nuc                                          c03fd566c7a4
+#-- 192.168.1.22  hootoo                                       44334cb7dfb0
+#-- 192.168.1.23  pi3-wifi                                     b827eb090b0a
+#-- 192.168.1.24  pi3 pihole unifi #mqtt mqtt.local             b827eb5c5e5f
+#-- 192.168.1.25  somebodyskindle                              802aa89608b8
+#-- 192.168.1.26  bair max                                     9a00066a45d0
+#-- # ? (192.168.1.27)                                         f0a2251d0e0d
+#-- 192.168.1.28  b         b-wifi                             801f02d37759
+#-- 192.168.1.29  ipad128                                      5cadcfc83f97
+#-- 192.168.1.30  g         g-wifi                             801f02d37720
+#-- 192.168.1.31  samsungdvd                                   90a4deb3406c
+#-- 192.168.1.39  zerow                                        b827ebab28d6
+#-- 192.168.1.40  zero                                         801f02bef6b3
+#-- 192.168.1.43  rokustick                                    b0a737e0cda5
+#-- 192.168.1.45  amcrest-wired                                9c08ecdfd065
+#-- 192.168.1.47  amcrest camera camera.local amcrest-wifi     9c08ecdfd281
+#-- 192.168.1.48  pi3jr pi3jr-wired                            b827eb064e54
+#-- 192.168.1.51  esp-green esp-9fbfdb                         68c63a9fbfdb # espid 10469339
+#-- 192.168.1.123 nuc-wifi                                     a0a8cdf46d7
+#-- 192.168.1.125 chris-kindle
+#-- 192.168.1.135 esp-red   esp-9fbb78                         68c63a9fbb78 # espid 10468216
+#-- 192.168.1.150 vince-kindle                                 fca183051cb5
+#-- 192.168.1.151 weatherflow wf                               b038297bf517
+#-- 192.168.1.152 pi3plus pi3plus-wifi nodered skahan          b827eba72cf3 mqtt
+#-- #192.168.1.152 pi3plus                                     b827ebf279a6  # this is the real wifi nic
+#-- 192.168.1.153 weemo-blue weemo                             382b780402df
+#-- 192.168.1.154 esp-white esp-452551                         b4e62d452551  # espid 4531537
+#-- 192.168.1.155 esp-blue  esp-453379                         b4e62d453379  # espid 4535161
+#-- 192.168.1.157 vincedot                                     cc9ea27918fd  # amazon-5ffccde91
+#-- 192.168.1.159 blink         blinkhub                       00037fbfe5bb
+#-- 192.168.1.160 mysimplelink  blinklive                      f4b85e998f83
+#-- 192.168.1.164 philips                                      001788a0ba1e
+#-- 192.168.1.168 susanphone                                   4026190ccc28
+#-- 192.168.1.169 nuc2-wifi                                    04d3b0fb58a1
+#-- 192.168.1.171 nuc2 influxdb-nuc2 influxdb                  94c691a6ea51
+#-- 192.168.1.173 purpleair purpleair-d32a                     84f3eb37d32a
+#-- 192.168.1.175 roku                                         d83134cf8054
+#-- 192.168.1.176 pixel3a                                      58cb527b808e
+#-- 
+#-- 192.168.1.182 unifi-switch   # 74:83:c2:7c:94:41
+#-- 192.168.1.164 pi4p1 pi4p1-wifi              # DC-A6-32-12-B1-92 was .177
+#-- 192.168.1.199 pi4p2 pi4p2-wifi              # DC-A6-32-41-A9-8F was .186
+#-- 
+#-- #192.168.1.177 pi4p1 pi4port1 # dc:a6:32:12:b1:92 wifi    dca63212b191 eth
+#-- #192.168.1.186 pi4p2 pi4port2 # dc:a6:32:41:a9:8f wifi    dc:a6:32:41:a9:8f eth
+#-- 192.168.1.187 pi4p3 pi4port3 # dc:a6:32:41:a9:35 wifi    dc:a6:32:41:a9:34 eth
+#-- 192.168.1.188 pi4p4 pi4port4 # dc:a6:32:41:a9:1a wifi    dc:a6:32:41:a9:19 eth
+#-- 
+#-- 192.168.1.206 zerow2
+#-- 
+#--

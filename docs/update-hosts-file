@@ -7,3 +7,7 @@
 
 #---- to update the hosts file just on one host
 # ansible-playbook -i hosts --tags hostname site.yml --limit hostnameHere
+
+#--- to update just the pi
+ansible-playbook ./site.yml -i hosts -l raspi --tags hostname
+
