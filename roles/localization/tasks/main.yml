@@ -1,0 +1,13 @@
+---
+
+# following courtesy of https://github.com/giuaig/ansible-raspi-config/blob/master/raspi-config.yml
+
+- block:
+
+    - name: Change locale
+      shell: "raspi-config nonint do_change_locale {{ LOCALE }}"
+
+    - name: Change keyboard layout
+      shell: "raspi-config nonint do_configure_keyboard {{ XKBLAYOUT }}"
+
+  become: true

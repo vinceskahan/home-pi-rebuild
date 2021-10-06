@@ -40,10 +40,10 @@ g
 
 # lets assume dramble rack and all wifi
 [pi_model4]
-pi4p1 hostname=pi4p1
-pi4p2 hostname=pi4p2
+pi4 hostname=pi4
+####pi4p2 hostname=pi4p2  (sold)
 ####pi4p3 hostname=pi4p3  (sold)
-pi4p4 hostname=pi4p4
+pi4jr hostname=pi4jr
 
 ## [downpi]
 ## g
