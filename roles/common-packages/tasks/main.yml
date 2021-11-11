@@ -5,7 +5,6 @@
       - vim
       - bc
       - lsof
-      - python-pip
       - python3-pip
     state: present
   become: true
