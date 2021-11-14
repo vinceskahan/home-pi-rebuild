@@ -35,6 +35,9 @@ Howto
 
 To run just this role, add "--tags hostname" to your ansible-playbook command line
 
+```
+ansible-playbook site.yml -i hosts -l pi3 --tags hostname
+```
 
 Notes
 -----
