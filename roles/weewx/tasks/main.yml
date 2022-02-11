@@ -46,11 +46,11 @@
       cmd: wee_extension --install /var/tmp/weewx-mqtt
       creates: /usr/share/weewx/user/mqtt.py
 
-  - name: enable MQTT extension (to pi4p1)
+  - name: enable MQTT extension (to pi4)
     lineinfile:
       path: /etc/weewx/weewx.conf
       regexp: 'server_url = INSERT_SERVER_URL_HERE'
-      line:   '        server_url = mqtt://192.168.1.177:1883'
+      line:   '        server_url = mqtt://192.168.1.164:1883'
     register: mqtt_extension_enabled
     notify: restart weewx
 
@@ -75,7 +75,7 @@
 #--- to do - the MQTT section should look like
 #[StdRESTful]
 #    [[MQTT]]
-#        server_url = mqtt://pi4p1:1883
+#        server_url = mqtt://pi4:1883
 #        topic = weather
 #        binding = archive, loop
 #        aggregation = aggregate
@@ -89,7 +89,7 @@
 #
 #        [[[Extras]]]
 #        mqtt_websockets_enabled = 1
-#        mqtt_websockets_host = 192.168.1.177
+#        mqtt_websockets_host = 192.168.1.164
 #        mqtt_websockets_port = 9001
 #        mqtt_websockets_ssl = 0
 #        mqtt_websockets_topic = "weather/loop"

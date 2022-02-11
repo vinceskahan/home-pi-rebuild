@@ -29,7 +29,7 @@ pi3plus
 [pi_model3]
 pi3jr-wifi hostname=pi3jr-wifi
 pi3
-zero
+zero hostname=zero
 zerow
 zerow2 hostname=zerow2
 
@@ -38,11 +38,8 @@ r
 pi
 g
 
-# lets assume dramble rack and all wifi
 [pi_model4]
 pi4 hostname=pi4
-####pi4p2 hostname=pi4p2  (sold)
-####pi4p3 hostname=pi4p3  (sold)
 pi4jr hostname=pi4jr
 
 ## [downpi]

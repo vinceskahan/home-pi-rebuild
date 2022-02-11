@@ -26,15 +26,6 @@
     - netmon
     ####- telegraf
 
-# - name: pi3plus only
-#   hosts: pi3plus
-#   gather_facts: false
-#   remote_user: "{{ remote_user }}"
-#   roles:
-#     - mosquitto
-#     - influxdb
-#     - grafana
-
 - name: pi3 only
   hosts: pi3
   gather_facts: false
@@ -49,10 +40,11 @@
   roles:
     - nginx-pi
 
-# - name: pi4p1 only
-#   hosts: pi4p1
+# - name: pi4 only
+#   hosts: pi4
 #   gather_facts: false
 #   remote_user: "{{ remote_user }}"
 #   roles:
 #     - mosquitto
 #     - weewx
+

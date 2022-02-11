@@ -8,11 +8,17 @@
       set_pi_pass: True
       update_apt_cache: True
       run_apt_upgrade:   True
+   
+  - name: Display all variables/facts known for a host
+    debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 1
 
   when:
-    - ansible_os_family == "Debian"
     - firstboot is defined and (firstboot|bool)
-    - ansible_lsb.id is defined and ansible_lsb.id == "Raspbian"
+    - ansible_os_family == "Debian"
+    - ansible_lsb.id is defined and (ansible_lsb.id == "Raspbian" or ansible_lsb.id == "Debian")
   become: true
   tags:
     - firstboot
+    
