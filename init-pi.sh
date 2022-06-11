@@ -3,6 +3,7 @@
 # host=zero
 #host=pi3jr-wifi
 host=pi4
+#host=zerow2
 
 GIT_REPO_PATH=/Users/vince/Desktop/gickup-backups/github.com/vinceskahan/home-pi-rebuild
 
