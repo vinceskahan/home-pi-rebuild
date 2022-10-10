@@ -1,0 +1,14 @@
+
+download your desired RaspiOS image
+mount the image (simply click on .img on a mac)
+cd /Volumes/boot
+ - touch ssh (to enable ssh)
+ - put wpa_supplicant.conf into place (to enable wifi)
+ - put userconf.txt into place (to set pi password)
+cd
+umount the mounted /Volumes/boot partition from the .img file
+use this modified image to install the pi
+
+
+Example userconf.txt file setting pi password to 'raspberry':
+pi:$6$Raji9gFb9gfhAdpH$niatWXBbC1OVOaukehTr/SG3TBMfRsDjpJBtKimd6PyMZ3TK.tVoqGgzXwiYc0UAz2U/h8CoPgsm0A/HlazRk0
