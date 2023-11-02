@@ -19,12 +19,12 @@
   gather_facts: false
   remote_user: "{{ remote_user }}" 
   roles:
-    - localization
     - pi-pass
     - apt-upgrade
     - pi-stats
     - netmon
     ####- telegraf
+    ####- localization     # broke pi5 beta os
 
 - name: pi3 only
   hosts: pi3

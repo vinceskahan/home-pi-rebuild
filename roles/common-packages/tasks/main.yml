@@ -6,6 +6,7 @@
       - bc
       - lsof
       - python3-pip
+      - rsyslog
     state: present
   become: true
   tags:
@@ -13,4 +14,5 @@
     - bc
     - lsof
     - common-packages
+    - rsyslog
 

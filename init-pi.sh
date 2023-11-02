@@ -1,8 +1,9 @@
 
+host=pi3plus
 #host=pi4jr
 # host=zero
 #host=pi3jr-wifi
-host=pi4
+#host=pi4
 #host=pi3
 #host=pi3jr-wifi
 #host=zerow2
