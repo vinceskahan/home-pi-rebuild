@@ -22,9 +22,13 @@ pi_model3
 pi_modelB
 pi_model3plus
 pi_model4
+pi_model5
 
 [pi_model3plus]
 pi3plus
+
+[pi_model5]
+pi5 hostname=pi5
 
 [pi_model3]
 pi3jr-wifi hostname=pi3jr-wifi

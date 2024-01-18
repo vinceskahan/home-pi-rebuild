@@ -4,7 +4,7 @@
   - name: install ntp daemon
     apt:
       name:
-        - ntp
+        - ntpsec
       state: present
     tags: ntp
 
