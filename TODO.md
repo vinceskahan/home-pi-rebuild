@@ -2,7 +2,7 @@
 
 To do List:
 
-* install weewx and fully configure it
+* install weewx and fully configure it in either v5 pip or dpkg mode
 
 * tmpfs on model-B to save SD writes
 
@@ -22,4 +22,7 @@ To do List:
      * motion for timelapse
      * symlink /var/www/html/image.jpg => /mnt/ramdisk/motion/lastsnap.jpg
 
+* drop root and pi ~/.vimrc files into place
+
+* localization needs some work to have it alter things only if needed
 

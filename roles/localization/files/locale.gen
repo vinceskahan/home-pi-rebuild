@@ -1,0 +1,4 @@
+# this is a tiny variant of raspios /etc/locale.gen
+# with the default GB line present and the desired US line added
+en_GB.UTF-8 UTF-8
+en_US.UTF-8 UTF-8

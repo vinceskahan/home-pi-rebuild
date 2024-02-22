@@ -24,6 +24,9 @@ individually by adding `--extra-vars` to the ansible-playbook command
 
     --extravars="optionX=True optionY=True" 
 
+Example:
+   ansible-playbook ./site.yml -i hosts -l pi4jr  --tags=localization [--check]
+
 
 Firstboot only
 ---------------

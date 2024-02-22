@@ -1,13 +1,72 @@
 ---
-
-# following courtesy of https://github.com/giuaig/ansible-raspi-config/blob/master/raspi-config.yml
+# 'localectl status' when we are done should look like:
+#     System Locale: LANG=en_US.utf8
+#         VC Keymap: (unset)
+#        X11 Layout: us
+#         X11 Model: pc105
+#
+# manual steps for root are:
+#   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+#   locale-gen --keep-existing en_US.UTF-8
+#   localectl set-locale LANG=en_US.utf8
+#
+# this is a little ridiculous actually
+# instead of a 3-line bash script but
+# ansible is ridiculous sometimes...
+#
 
 - block:
 
-    - name: Change locale
-      shell: "raspi-config nonint do_change_locale {{ LOCALE }}"
+  # this is cheating a little because we know a vanilla raspios
+  # does not uncomment the US locale in locale.gen, so checking
+  # to see if it known is enough to know we are a clean new installation
 
-    - name: Change keyboard layout
-      shell: "raspi-config nonint do_configure_keyboard {{ XKBLAYOUT }}"
+  - name: check known locales
+    shell: "localectl list-locales | grep en_US.UTF-8"
+    register: is_locale_known 
+    failed_when: is_locale_known.rc !=0 and is_locale_known.rc !=1
+    check_mode: false
+    changed_when: false
+
+  #----- if not known, set default
+  - name: copy /etc/default/locale into place
+    copy:
+      src:  "{{ item }}"
+      dest: "/etc/default/{{ item }}"
+    with_items:
+      - locale
+    when: is_locale_known.rc == 1
+    register: locale_copied_into_place
+
+  #---- and copy locale.gen into place
+  - name: copy /etc/locale.gen into place
+    copy:
+      src:  "{{ item }}"
+      dest: "/etc//{{ item }}"
+    with_items:
+      - locale.gen
+    when: locale_copied_into_place.changed
+    register: locale_gen_copied_into_place
+
+  #---- and generate the added locale
+  # TODO: this always shows changed
+  - name: generate the missing locale if needed
+    shell: "locale-gen --keep-existing en_US.UTF-8"
+    when:  locale_gen_copied_into_place.changed
+
+  #---- and check it was generated
+  # TODO: this always shows changed
+  - name: check locale is set
+    shell: "localectl status | grep 'System Locale' | grep en_US.utf8"
+    when:  locale_gen_copied_into_place.changed
+    register: is_locale_set
+    failed_when: is_locale_set.rc !=0 and is_locale_set.rc !=1
+
+  #--- and enable it (this seems to not be needed)
+  #- name: set locale
+  #  shell: "localectl set-locale LANG=en_US.utf8"
+  #  when: is_locale_set.rc == 1
 
   become: true
+  tags: localization
+

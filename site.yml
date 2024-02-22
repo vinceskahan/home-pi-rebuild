@@ -23,8 +23,8 @@
     - apt-upgrade
     - pi-stats
     - netmon
+    - localization
     ####- telegraf
-    ####- localization     # broke pi5 beta os
 
 - name: pi3 only
   hosts: pi3
@@ -47,4 +47,3 @@
 #   roles:
 #     - mosquitto
 #     - weewx
-
