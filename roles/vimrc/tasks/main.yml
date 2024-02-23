@@ -1,0 +1,27 @@
+---
+# tasks file for installing vimrc
+
+- block:
+
+  - name: copy root .vimrc into place
+    copy:
+      src:  "{{ item }}"
+      dest: "/root/.vimrc"
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
+      - vimrc
+
+  - name: copy pi .vimrc into place
+    copy:
+      src:  "{{ item }}"
+      dest: "/home/pi/.vimrc"
+      mode: 0755
+      owner: pi
+      group: pi
+    with_items:
+      - vimrc
+
+  become: true
+  tags: vimrc
