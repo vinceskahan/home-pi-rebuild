@@ -22,6 +22,18 @@
       group: pi
     with_items:
       - vimrc
+    when: inventory_hostname in groups["raspi"]
+
+  - name: copy vince .vimrc into place
+    copy:
+      src:  "{{ item }}"
+      dest: "/home/vince/.vimrc"
+      mode: 0755
+      owner: vince
+      group: vince
+    with_items:
+      - vimrc
+    when: inventory_hostname in groups["nucs"]
 
   become: true
   tags: vimrc

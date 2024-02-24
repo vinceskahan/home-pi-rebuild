@@ -13,6 +13,7 @@
 [all:children]
 dockstar
 raspi
+# nucs
 
 [dockstar]
 debian-ansible
@@ -45,6 +46,10 @@ g
 [pi_model4]
 pi4 hostname=pi4
 pi4jr hostname=pi4jr
+
+[nucs]
+nuc hostname=nuc
+#nuc2 hostname=nuc2
 
 ## [downpi]
 ## g

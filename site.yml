@@ -27,6 +27,14 @@
     - localization
     ####- telegraf
 
+- name: all ubuntu nuc
+  hosts: nucs
+  gather_facts: false
+  remote_user: "{{ remote_user }}" 
+  roles:
+    - apt-upgrade
+    - localization
+
 - name: pi3 only
   hosts: pi3
   gather_facts: false

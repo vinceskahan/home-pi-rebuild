@@ -1,0 +1,9 @@
+---
+remote_user: vince
+
+# roles/crontab
+enable_measure_temp_crontab: false
+
+# localization
+LOCALE: "en_US.UTF-8"
+XKBLAYOUT: ""

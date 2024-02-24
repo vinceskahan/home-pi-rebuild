@@ -1,4 +1,5 @@
 ---
 # defaults file for timezone
 
-timezone: US/Pacific
+#timezone: US/Pacific
+timezone: America/Los_Angeles
