@@ -1,0 +1,5 @@
+---
+# defaults file for apt-autoremove
+
+# set to True to run the autoremove
+run_apt_autoremove: False

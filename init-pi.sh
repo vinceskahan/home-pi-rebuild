@@ -1,6 +1,6 @@
 
-#host=pi3plus
-host=pi4jr
+host=pi3plus
+#host=pi4jr
 # host=zero
 #host=pi3jr-wifi
 #host=pi4

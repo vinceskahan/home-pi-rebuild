@@ -22,6 +22,7 @@
   roles:
     - pi-pass
     - apt-upgrade
+    - apt-autoremove
     - pi-stats
     - netmon
     - localization

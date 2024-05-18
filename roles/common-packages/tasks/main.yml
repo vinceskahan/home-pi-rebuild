@@ -8,7 +8,7 @@
       - python3-pip
       - rsyslog
       - htop
-      - lm_sensors
+      - lm-sensors
     state: present
   become: true
   tags:

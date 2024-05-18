@@ -1,0 +1,13 @@
+---
+# tasks file for apt-autoremove
+
+- block:
+    - name: run apt-autoremove
+      apt: autoremove=yes
+  when:
+    - ansible_os_family == "Debian"
+    - run_apt_autoremove is defined and (run_apt_autoremove|bool)
+  become: true
+  tags: apt-autoremove
+
+
